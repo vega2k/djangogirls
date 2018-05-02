@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <table>
+    <h1>New comment</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        <table class="table table-bordered table-hover">
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+            {% for field in form.visible_fields %}
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>
+                    {{ field }}
+                    <!--{{ field.help_text }}-->
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+            <!--<tr>-->
+                <!--<td>{{ form.author.label_tag }}</td>-->
+                <!--<td>{{ form.author }}-->
+                    <!--{{ form.author.help_text }}-->
+                    <!--{% for error in form.author.errors %} &lt;!&ndash; author errors 목록 노출 &ndash;&gt;-->
+                        <!--{{ erorr }}-->
+                    <!--{% endfor %}-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>{{ form.text.label_tag }}</td>-->
+                <!--<td>{{ form.text }}</td>-->
+            <!--</tr>-->
+        </table>
+        <button type="submit"  class="save btn btn-default">Send</button>
+    </form>
+    </table>
+{% endblock %}

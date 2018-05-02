@@ -1,0 +1,42 @@
+# 후보가 되는 숫자는 [] 브래킷으로 감싸 준다.
+"01[016789]"
+"01[016789][123456789]"
+"01[016789][123456789][0123456789]"
+"01[016789][1-9][0-9]"
+"01[016789][1-9]\d\d\d\d\d\d\d"
+"01[016789][1-9]\d{6,7}
+
+
+010
+011
+106
+017
+018
+019
+---------------------
+QuerySet
+교재에 나와 있는 내용은
+from django.contrib.auth.models import User
+
+아래의 코드가 더 권장하는 코드이다.
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
+me = User.objects.get(username='admin')
+
+-----------------------------------------
+실제 어떤 SQL 문장이 실행되었는지 확인하려면
+from django.db import connection
+
+connection.queries
+
+------------------------------------------------------
+Post.objects.all().count() 하면 레코드가 몇건 인지도 알 수 있다.
+-----------------------------------------------------------
+django에서 날짜를 가져올때는 from datetime import datetime 하면 않되고
+from django.utils import timezone 해야 한다.
+---------------------------------------------------------
+post=Post.objects.get(title='Sample title')
+
+
+
